@@ -1,0 +1,20 @@
+﻿@model CommentListViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "COMMENTS";
+}
+<h3 class="text-center">SEE ALL THE COMMENTS HERE!!!</h3>
+<div>
+    @foreach (var comment in Model.comments)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                @comment.comments
+            </div>
+        </div>
+    }
+    <div>
+        <a href="~/Home/SeePosts" class="btn btn-primary">Go Back To The Post</a>
+    </div>
+</div>

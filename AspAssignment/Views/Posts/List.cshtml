@@ -1,0 +1,43 @@
+﻿@model PostsListViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "REGISTER";
+}
+
+<div class="card-header text-right">
+    <form>
+        <textarea rows="5" cols="50" name="Post">
+                    Enter Your Post Here
+                </textarea>
+        <input asp-controller="Posts" asp-action="List"  type="submit" value="POST YOUR OWN!!!" class="btn btn-primary" />
+
+    </form>
+
+</div>
+<div class="card-header">
+    @foreach (var post in Model.posts)
+    {
+
+         <div class="card m-3">
+            <div class="card-header">
+                @post.UserName
+            </div>
+            <div>
+                @post.Post
+            </div>
+            <div>
+                Likes:@post.Likes
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn-dark" id="btnScore" onclick="IncrementCount(@post.Post_Id)">LIKE</button>
+
+                <a asp-controller="Posts" asp-action="Comment" asp-route-id="@post.Post_Id" class="btn btn-dark">COMMENT</a>
+
+                <button href="#" class="btn btn-dark">SHARE</button>
+            </div>
+        </div>
+    }
+    
+  </div>
+
